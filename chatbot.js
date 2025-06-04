@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const chatbotButton = document.createElement("button");
     chatbotButton.id = "chatbot-toggle";
-    chatbotButton.innerText = "💬";
+    chatbotButton.innerText = "🤖";
     chatbotButton.style.position = "fixed";
     chatbotButton.style.bottom = "30px";
     chatbotButton.style.right = "30px";

@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
         if (msgsEl.children.length === 0) {
-            addMessage('bot', "Bonjour ! 👋<br>Je suis l'assistant virtuel. Posez-moi une question ou cliquez sur 💡 pour des idées.");
+            addMessage('bot', "Bonjour ! 👋<br>Je suis l'assistant virtuel. Je ne suis pas un modèle de chatbot , encore moins une IA, je ne suis qu'un simple programme qui scrappe cette page en essayant de vous donner quelques informations sur le portfolio. Posez-moi une question ou cliquez sur 💡 pour des idées.");
         }
     }, 1000);
 });

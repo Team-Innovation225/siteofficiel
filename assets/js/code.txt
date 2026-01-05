@@ -1,0 +1,244 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+    // --- 1. CONFIGURATION & STYLES (Déjà en place, je remets le CSS essentiel) ---
+    const style = document.createElement('style');
+    style.innerHTML = `
+        :root { --bot-primary: #0078d7; --bot-bg: #fff; }
+        /* ... (Garde tes styles CSS précédents ici, ils étaient parfaits) ... */
+        /* Ajoutons juste une classe pour les choix cliquables dans le chat */
+        .chat-choice-btn {
+            background: #eefec3; border: 1px solid #ddd; padding: 5px 10px; 
+            border-radius: 15px; cursor: pointer; margin: 2px; font-size: 0.85rem; display:inline-block;
+        }
+        .chat-choice-btn:hover { background: #dcd; border-color: #aaa; }
+    `;
+    document.head.appendChild(style);
+
+    // --- 2. LOGIQUE DE DONNÉES ---
+    
+    // Variable pour se souvenir du sujet en cours (LA CLÉ DE L'INTELLIGENCE)
+    let conversationContext = null; 
+    // Valeurs possibles: null, 'waiting_member_selection', 'waiting_project_selection'
+
+    function unique(array) { return Array.from(new Set(array)); }
+    function formatList(arr) { return arr.join(', ').replace(/, ([^,]*)$/, ' et $1'); }
+
+    function collectData() {
+        const members = [];
+        const projects = [];
+        const skills = [];
+        let contacts = { emails: [], links: [] };
+
+        // Scraping Membres
+        document.querySelectorAll('.team-grid .member-card').forEach(card => {
+            const name = card.querySelector('.member-name')?.innerText.trim();
+            const role = card.querySelector('.member-role')?.innerText.trim();
+            if (name) members.push({ name, role });
+        });
+        
+        // Scraping Pages Membres (pour détails)
+        document.querySelectorAll('.member-page').forEach(page => {
+            const name = page.querySelector('.member-hero h1')?.innerText.trim();
+            if (!name) return;
+            const role = page.querySelector('.member-role')?.innerText.trim() || '';
+            const bio = page.querySelector('.detail-section p')?.innerText.trim() || '';
+            const contactEls = Array.from(page.querySelectorAll('.contact-grid a'));
+            const emails = contactEls.filter(a => a.href.startsWith('mailto:')).map(a => a.href.replace('mailto:', ''));
+            
+            // Mise à jour ou ajout
+            const idx = members.findIndex(m => m.name === name);
+            const details = { name, role, bio, emails };
+            if (idx === -1) members.push(details);
+            else members[idx] = { ...members[idx], ...details };
+        });
+
+        // Scraping Projets
+        document.querySelectorAll('.project-item').forEach(item => {
+            const title = item.querySelector('.project-title')?.innerText.trim();
+            if (title) projects.push({ title });
+        });
+
+        return { members, projects };
+    }
+
+    // --- 3. CERVEAU DU BOT (AMÉLIORÉ) ---
+
+    function getBotResponse(input) {
+        const data = collectData();
+        const cle = input.toLowerCase().trim();
+
+        // --- GESTION DU CONTEXTE (Mémoire) ---
+        
+        // Si le bot attendait qu'on choisisse un membre
+        if (conversationContext === 'waiting_member_selection') {
+            
+            // Si l'utilisateur dit "Oui"
+            if (cle === 'oui' || cle === 'yes' || cle === 'ok') {
+                return "Lequel vous intéresse ? Vous pouvez taper son prénom (ex: Mickael, Frejus...).";
+            }
+            
+            // Si l'utilisateur dit "Non"
+            if (cle === 'non' || cle === 'no') {
+                conversationContext = null; // On oublie le contexte
+                return "D'accord, pas de problème. Autre chose ?";
+            }
+
+            // Si l'utilisateur tape un nom directement alors qu'on est dans ce contexte
+            const foundMember = findMemberByName(cle, data.members);
+            if (foundMember) {
+                conversationContext = null; // Mission accomplie, on reset
+                return formatMemberDetails(foundMember);
+            }
+        }
+
+        // --- GESTION DES COMMANDES CLASSIQUES ---
+
+        // Salutations
+        if (cle.match(/bonjour|salut|coucou|hello/)) {
+            conversationContext = null;
+            return 'Bonjour ! 👋 Je suis l\'IA de l\'équipe. Demandez-moi "Qui êtes-vous ?" ou "Vos projets".';
+        }
+
+        // Question sur l'équipe
+        if (cle.includes('qui') || cle.includes('équipe') || cle.includes('team') || cle.includes('membres')) {
+            if (data.members.length === 0) return "Je ne trouve pas la liste des membres sur cette page.";
+            
+            const noms = data.members.map(m => m.name);
+            
+            // **C'est ici qu'on active le contexte**
+            conversationContext = 'waiting_member_selection'; 
+            
+            return `L'équipe est composée de : <b>${formatList(noms)}</b>.<br><br>Vous voulez des détails sur un membre en particulier ? (Répondez "Oui" ou tapez son nom).`;
+        }
+
+        // Recherche d'un membre (Hors contexte, ex: l'utilisateur tape juste "Mickael")
+        const directMember = findMemberByName(cle, data.members);
+        if (directMember) {
+            conversationContext = null;
+            return formatMemberDetails(directMember);
+        }
+
+        // Projets
+        if (cle.includes('projet')) {
+            const titres = data.projects.map(p => p.title);
+            if (titres.length === 0) return "Aucun projet détecté.";
+            return `Nous avons réalisé : ${titres.join(', ')}.`;
+        }
+
+        // Si rien n'est compris
+        conversationContext = null; // On reset par sécurité
+        return "Je n'ai pas compris. Essayez d'ouvrir les suggestions 💡 ou reformulez.";
+    }
+
+    // --- FONCTIONS UTILITAIRES POUR L'IA ---
+
+    // Cherche un membre même avec juste le prénom ou une partie du nom
+    function findMemberByName(query, members) {
+        return members.find(m => m.name.toLowerCase().includes(query));
+    }
+
+    // Formate la réponse jolie pour un membre
+    function formatMemberDetails(m) {
+        let resp = `👤 <b>${m.name}</b>`;
+        if (m.role) resp += `<br>🛠 ${m.role}`;
+        if (m.bio) resp += `<br><br><i>${m.bio}</i>`;
+        if (m.emails && m.emails.length) resp += `<br>📧 <a href="mailto:${m.emails[0]}">${m.emails[0]}</a>`;
+        return resp;
+    }
+
+    // --- 4. INTERFACE (Code UI identique au précédent) ---
+    // (Je remets la structure minimale pour que ça marche direct si tu copies tout)
+    
+    const uiHTML = `
+        <div id="bot-launcher">🤖</div>
+        <div id="bot-window">
+            <div class="bot-header"><span>Team Bot</span><span class="bot-close">&times;</span></div>
+            <div class="bot-messages" id="bot-msgs"></div>
+            <div class="typing" id="bot-typing">Team Innovation écrit<span>.</span><span>.</span><span>.</span></div>
+            <div class="bot-input-area">
+                <button class="bot-btn-sug" id="btn-toggle-sug">💡</button>
+                <input type="text" class="bot-input" id="bot-input-field" placeholder="..." autocomplete="off">
+                <button class="bot-btn-send" id="bot-send">➤</button>
+            </div>
+            <div class="bot-suggestions-drawer" id="bot-drawer">
+                <div class="sug-header"><span>Suggestions</span><span id="close-drawer">&times;</span></div>
+                <div id="sug-content"></div>
+            </div>
+        </div>
+    `;
+    // Note: Assure-toi d'avoir le CSS du message précédent pour que le HTML ci-dessus soit beau.
+    // Si tu as déjà le HTML/CSS en place, tu n'as besoin que de la partie JS ci-dessus.
+    
+    // (Pour être sûr que le code fonctionne en un bloc, je réinjecte l'UI si elle n'est pas là)
+    if (!document.getElementById('bot-window')) {
+        const container = document.createElement('div');
+        container.innerHTML = uiHTML;
+        document.body.appendChild(container);
+    }
+
+    // Références DOM
+    const launcher = document.getElementById('bot-launcher');
+    const windowEl = document.getElementById('bot-window');
+    const closeBtn = document.querySelector('.bot-close');
+    const msgsEl = document.getElementById('bot-msgs');
+    const inputField = document.getElementById('bot-input-field');
+    const sendBtn = document.getElementById('bot-send');
+    const toggleSugBtn = document.getElementById('btn-toggle-sug');
+    const drawerEl = document.getElementById('bot-drawer');
+    const closeDrawerBtn = document.getElementById('close-drawer');
+    const sugContent = document.getElementById('sug-content');
+    const typingEl = document.getElementById('bot-typing');
+
+    // Events UI
+    function toggleChat() { windowEl.classList.toggle('active'); launcher.classList.toggle('hidden'); if(windowEl.classList.contains('active')) inputField.focus(); }
+    launcher.onclick = toggleChat;
+    closeBtn.onclick = toggleChat;
+    toggleSugBtn.onclick = () => { drawerEl.classList.toggle('open'); updateSuggestions(); };
+    closeDrawerBtn.onclick = () => drawerEl.classList.remove('open');
+
+    function addMessage(sender, text) {
+        const div = document.createElement('div');
+        div.className = `msg-row ${sender}`;
+        div.innerHTML = `<span class="msg-bubble">${text}</span>`;
+        msgsEl.appendChild(div);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+    }
+
+    function updateSuggestions() {
+        sugContent.innerHTML = '';
+        const data = collectData();
+        const sugs = [
+            {txt: 'Qui êtes-vous ?', val: 'qui etes vous'},
+            {txt: 'Vos projets', val: 'projets'},
+            ...data.members.slice(0,3).map(m => ({txt: m.name, val: m.name}))
+        ];
+        sugs.forEach(s => {
+            const btn = document.createElement('button');
+            btn.className = 'sug-chip';
+            btn.innerText = s.txt;
+            btn.onclick = () => { handleInput(s.val); drawerEl.classList.remove('open'); };
+            sugContent.appendChild(btn);
+        });
+    }
+
+    function handleInput(text) {
+        if (!text) return;
+        addMessage('user', text);
+        inputField.value = '';
+        typingEl.style.display = 'block';
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        
+        setTimeout(() => {
+            typingEl.style.display = 'none';
+            const resp = getBotResponse(text);
+            addMessage('bot', resp);
+        }, 600);
+    }
+
+    sendBtn.onclick = () => handleInput(inputField.value.trim());
+    inputField.onkeypress = (e) => { if(e.key === 'Enter') handleInput(inputField.value.trim()); };
+
+    setTimeout(() => {
+        if(msgsEl.children.length === 0) addMessage('bot', "Bonjour ! 👋 Je peux répondre à vos questions sur l'équipe.");
+    }, 800);
+});

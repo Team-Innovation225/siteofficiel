@@ -3,390 +3,941 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Innovation - Portfolio</title>
+    <title>Team Innovation - Portfolio Professionnel</title>
     <link rel="stylesheet" href="team.css">
+    
+    <!-- Google Fonts - Professional Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Team Innovation</div>
-            <ul class="nav-links">
-                <li><a href="#home" onclick="showHome()">Accueil</a></li>
-                <li><a href="#team">Équipe</a></li>
-                <li><a href="#about">À propos</a></li>
+    <!-- Navigation Header -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="logo.png" alt="Team Innovation Logo" class="logo-image">
+                <span class="logo-text">Team Innovation</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-nav="home">Accueil</a></li>
+                <li><a href="#team" class="nav-link" data-nav="team">Équipe</a></li>
+                <li><a href="#projects" class="nav-link" data-nav="projects">Projets</a></li>
+                <li><a href="#about" class="nav-link" data-nav="about">À propos</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
     <!-- Page d'accueil -->
-    <div id="home-page" class="page-content">
-        <main>
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Team Innovation</h1>
-                    <p>Une équipe passionnée de développeurs prête à relever tous les défis du hackathon</p>
-                    <a href="#team" class="cta-button">Découvrir l'équipe</a>
+    <div id="home-page" class="page-active">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="grid-pattern"></div>
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="award"></i>
+                    <span>Hackathon Winners</span>
                 </div>
-            </section>
-
-            <section id="team" class="team-section">
-                <h2 class="section-title">Notre Équipe</h2>
-                <div class="team-grid">
-                    <div class="member-card" onclick="showMemberPage('member1')">
-                        <div class="member-photo">
-                            <img src="DK.jpg" alt="photo de diomande">
-                        </div>
-                        <h3 class="member-name">Diomande Mickael</h3>
-                        <p class="member-role">Développeur Back-end & IA(junior)</p>
-                        <p class="member-description">Junior en développement Back-end avec une passion pour l'innovation technologique.</p>
-                    </div>
-
-                    <div class="member-card" onclick="showMemberPage('member2')">
-                        <div class="member-photo">
-                            <img src="WhatsApp Image 2025-05-31 at 10.55.02.jpeg" alt="photo de frejus">
-                        </div>
-                        <h3 class="member-name">Frejus Kouadio</h3>
-                        <p class="member-role">UI/UX Designer (junior)</p>
-                        <p class="member-description">Junior dans la conception d'interfaces modernes.</p>
-                    </div>
-
-                    <div class="member-card" onclick="showMemberPage('member3')">
-                        <div class="member-photo">
-                            <img src="WhatsApp Image 2025-05-31 at 10.55.02 (1).jpeg" alt="">
-                        </div>
-                        <h3 class="member-name">Honorable Djeke</h3>
-                        <p class="member-role">Junior en Data Base</p>
-                        <p class="member-description">Spécialisé en gestion et conception de bases de données.</p>
-                    </div>
-
-                    <div class="member-card" onclick="showMemberPage('member4')" id="member4">
-                        <div class="member-photo">
-                            <img src="WhatsApp Image 2025-05-31 at 10.49.02 (1).jpeg" alt="jemima">
-                        </div>
-                        <h3 class="member-name">N'guesssan Moaye</h3>
-                        <p class="member-role">Dev Back-end (junior)</p>
-                        <p class="member-description">Développeur back-end passionné par les technologies web.</p>
-                    </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Building the</span>
+                    <span class="title-line accent">Future of Tech</span>
+                </h1>
+                <p class="hero-description">
+                    Une équipe de développeurs passionnés, créatifs et déterminés à transformer des idées innovantes en solutions concrètes lors de hackathons et projets collaboratifs.
+                </p>
+                <div class="hero-cta">
+                    <a href="#team" class="btn btn-primary">
+                        <span>Découvrir l'équipe</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>Nos projets</span>
+                        <i data-lucide="folder"></i>
+                    </a>
                 </div>
-            </section>
-
-            <section id="about" class="about-section">
-                <div class="about-content">
-                    <h2 class="section-title">À Propos de Nous</h2>
-                    <p class="about-text">
-
-                         Team Innovation, c’est avant tout une équipe de jeunes passionnés par la technologie, curieux et motivés à faire la différence. Même si nous sommes encore en début de parcours, nous croyons en la force de la collaboration, de la créativité et de l’apprentissage continu.
-                         Chaque hackathon est pour nous une opportunité unique de nous dépasser, de découvrir de nouvelles compétences, et surtout, de transformer nos idées en solutions concrètes. 
-                         Nous venons d’horizons variés, avec chacun nos talents, mais un même objectif : innover pour impacter. Nous ne sommes peut-être pas encore des experts, mais nous avons ce que les grandes idées exigent : l’envie d’apprendre, le courage de créer, et la passion de bâtir.
-                    </p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">4+</span>
-                            <div class="stat-label">Projets Réalisés</div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="users"></i>
                         </div>
-                        <div class="stat">
+                        <div class="stat-info">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Membres</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="trophy"></i>
+                        </div>
+                        <div class="stat-info">
                             <span class="stat-number">2</span>
-                            <div class="stat-label">Hackathons Participés</div>
+                            <span class="stat-label">Hackathons</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <div class="stat-label">Technologies Maîtrisées</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Projets</span>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section team-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">
+                        <i data-lucide="users"></i>
+                        Notre équipe
+                    </span>
+                    <h2 class="section-title">Les talents qui font la différence</h2>
+                    <p class="section-description">
+                        Une synergie de compétences complémentaires au service de l'innovation
+                    </p>
+                </div>
+                
+                <div class="team-grid">
+                    <!-- Member 1 -->
+                    <article class="member-card" data-member="member1">
+                        <div class="member-image">
+                            <img src="DK.jpg" alt="Diomande Mickael" loading="lazy">
+                            <div class="member-overlay">
+                                <span class="view-profile">
+                                    Voir le profil
+                                    <i data-lucide="arrow-up-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Diomande Mickael</h3>
+                            <p class="member-role">
+                                <i data-lucide="terminal"></i>
+                                Développeur Back-end & IA
+                            </p>
+                            <p class="member-bio">
+                                Spécialiste en développement back-end avec expertise en intelligence artificielle et APIs REST.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">Laravel</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Member 2 -->
+                    <article class="member-card" data-member="member2">
+                        <div class="member-image">
+                            <img src="WhatsApp Image 2025-05-31 at 10.55.02.jpeg" alt="Frejus Kouadio" loading="lazy">
+                            <div class="member-overlay">
+                                <span class="view-profile">
+                                    Voir le profil
+                                    <i data-lucide="arrow-up-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Frejus Kouadio</h3>
+                            <p class="member-role">
+                                <i data-lucide="palette"></i>
+                                UI/UX Designer
+                            </p>
+                            <p class="member-bio">
+                                Designer passionné créant des interfaces modernes, intuitives et centrées sur l'expérience utilisateur.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Member 3 -->
+                    <article class="member-card" data-member="member3">
+                        <div class="member-image">
+                            <img src="WhatsApp Image 2025-05-31 at 10.55.02 (1).jpeg" alt="Honorable Djeke" loading="lazy">
+                            <div class="member-overlay">
+                                <span class="view-profile">
+                                    Voir le profil
+                                    <i data-lucide="arrow-up-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Honorable Djeke</h3>
+                            <p class="member-role">
+                                <i data-lucide="database"></i>
+                                Spécialiste Base de Données
+                            </p>
+                            <p class="member-bio">
+                                Expert en conception et gestion de bases de données, garantissant performance et sécurité.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Firebase</span>
+                                <span class="skill-tag">PHP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Member 4 -->
+                    <article class="member-card" data-member="member4">
+                        <div class="member-image">
+                            <img src="WhatsApp Image 2025-05-31 at 10.49.02 (1).jpeg" alt="N'guesssan Moaye" loading="lazy">
+                            <div class="member-overlay">
+                                <span class="view-profile">
+                                    Voir le profil
+                                    <i data-lucide="arrow-up-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">N'guesssan Moaye</h3>
+                            <p class="member-role">
+                                <i data-lucide="server"></i>
+                                Développeur Back-end
+                            </p>
+                            <p class="member-bio">
+                                Développeuse passionnée par les technologies web et l'architecture back-end robuste.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">
+                        <i data-lucide="rocket"></i>
+                        Nos réalisations
+                    </span>
+                    <h2 class="section-title">Projets qui font la différence</h2>
+                </div>
+
+                <div class="project-featured">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">IA</span>
+                            <span class="tag">Santé</span>
+                            <span class="tag">Hackathon</span>
+                        </div>
+                        <h3 class="project-title">SanteAI</h3>
+                        <p class="project-description">
+                            Assistant intelligent développé lors du Hackathon AbiHack Google 2025. Utilise l'IA pour améliorer la prise en charge des patients dans les services médicaux, automatiser les tâches administratives et fournir des recommandations basées sur Google AI.
+                        </p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <i data-lucide="calendar"></i>
+                                <span>Juillet 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="users"></i>
+                                <span>4 développeurs</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="award"></i>
+                                <span>Hackathon Winner</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-item">Google AI</span>
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">Django</span>
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">Firebase</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <a href="https://devpost.com/software/santeai" target="_blank" class="project-link-overlay" title="Voir le projet">
+                            <i data-lucide="external-link"></i>
+                        </a>
+                        <div class="project-mockup">
+                            <img src="santeAI.PNG" alt="Aperçu SanteAI" class="project-image">
+                            
+                            <!-- <div class="project-mockup-placeholder">
+                                <i data-lucide="sparkles"></i>
+                                <span>SanteAI Preview</span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-badge">
+                            <i data-lucide="heart"></i>
+                            Notre mission
+                        </span>
+                        <h2 class="section-title">Innovation par la passion</h2>
+                        <p class="about-text">
+                            Team Innovation, c'est avant tout une équipe de jeunes passionnés par la technologie, curieux et motivés à faire la différence. Même si nous sommes encore en début de parcours, nous croyons en la force de la collaboration, de la créativité et de l'apprentissage continu.
+                        </p>
+                        <p class="about-text">
+                            Chaque hackathon est pour nous une opportunité unique de nous dépasser, de découvrir de nouvelles compétences, et surtout, de transformer nos idées en solutions concrètes. Nous ne sommes peut-être pas encore des experts, mais nous avons ce que les grandes idées exigent : l'envie d'apprendre, le courage de créer, et la passion de bâtir.
+                        </p>
+                        <div class="about-values">
+                            <div class="value-item">
+                                <i data-lucide="lightbulb"></i>
+                                <h4>Innovation</h4>
+                                <p>Nous repoussons les limites du possible</p>
+                            </div>
+                            <div class="value-item">
+                                <i data-lucide="handshake"></i>
+                                <h4>Collaboration</h4>
+                                <p>L'union fait la force de notre équipe</p>
+                            </div>
+                            <div class="value-item">
+                                <i data-lucide="target"></i>
+                                <h4>Excellence</h4>
+                                <p>Nous visons toujours plus haut</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-card-icon">
+                                <i data-lucide="code"></i>
+                            </div>
+                            <div class="stat-card-content">
+                                <h3 class="stat-card-number" data-count="5">0</h3>
+                                <p class="stat-card-label">Technologies maîtrisées</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon">
+                                <i data-lucide="trophy"></i>
+                            </div>
+                            <div class="stat-card-content">
+                                <h3 class="stat-card-number" data-count="2">0</h3>
+                                <p class="stat-card-label">Hackathons participés</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon">
+                                <i data-lucide="check-circle"></i>
+                            </div>
+                            <div class="stat-card-content">
+                                <h3 class="stat-card-number" data-count="4">0</h3>
+                                <p class="stat-card-label">Projets réalisés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Prêts à innover ensemble ?</h2>
+                    <p class="cta-description">
+                        Contactez-nous pour collaborer sur votre prochain projet ou hackathon
+                    </p>
+                    <a href="#team" class="btn btn-primary btn-large">
+                        <span>Contacter l'équipe</span>
+                        <i data-lucide="send"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Pages membres individuelles -->
     <div id="member1-page" class="member-page">
-        <a href="#" class="back-button" onclick="showHome()">← Retour</a>
-        <section class="member-hero">
-            <div class="member-hero-content">
-                <div class="member-photo">
-                     <img src="DK.jpg" alt="photo de diomande">
-                </div>
-                <h1>Diomande Mickael</h1>
-                <p class="member-role">Développeur Back-end & IA</p>
-                <p class="member-quote">"La technologie n'est pas juste un domaine d'étude, c'est un levier pour changer ma vie"</p>
-            </div>
-        </section>
+        <button class="back-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Retour</span>
+        </button>
         
-        <div class="member-details">
-            <div class="detail-section">
-                <h2>Biographie</h2>
-                <p>Je suis un passionné de technologies, curieux de tout ce que l'innovation peut offrir.
-    Pour moi, la tech n'est pas juste un domaine d'étude, c'est un levier pour changer ma vie,
-    apprendre chaque jour, et construire quelque chose qui me dépasse.
-    J'explore, j'expérimente, je me forme, avec l'envie de transformer cette passion en métier,
-    en impact, en avenir. Ce hackathon est pour moi une étape de plus dans ce parcours : 
-    apprendre, créer, rencontrer, et avancer.</p>
-            </div>
-
-            <div class="detail-section">
-                <h2>Compétences Techniques</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <div class="skill-name">JavaScript / Notions front-end</div>
+        <div class="member-hero-section">
+            <div class="container">
+                <div class="member-hero-grid">
+                    <div class="member-hero-image">
+                        <img src="DK.jpg" alt="Diomande Mickael">
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">PHP</div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">Python / Connaissances de base</div>
-                    </div>
-                </div>
-                <h2>Outils de développeur</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-name">Git/GitHub - Travail en équipe</div>
+                    <div class="member-hero-info">
+                        <h1 class="member-hero-name">Diomande Mickael</h1>
+                        <p class="member-hero-role">
+                            <i data-lucide="terminal"></i>
+                            Développeur Back-end & IA
+                        </p>
+                        <blockquote class="member-quote">
+                            "La technologie n'est pas juste un domaine d'étude, c'est un levier pour changer ma vie"
+                        </blockquote>
+                        <div class="member-hero-actions">
+                            <a href="https://termuxdev.netlify.app/" target="_blank" class="btn btn-primary">
+                                <span>Portfolio</span>
+                                <i data-lucide="external-link"></i>
+                            </a>
+                            <div class="member-social">
+                                <a href="https://github.com/TermuxDev" target="_blank" class="social-link">
+                                    <i data-lucide="github"></i>
+                                </a>
+                                <a href="#" target="_blank" class="social-link">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                                <a href="/cdn-cgi/l/email-protection#e88c81878589868c8dc685818b83898d84a88f85898184c68b8785" class="social-link">
+                                    <i data-lucide="mail"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Trello/Notion - Gestion de tâches et projets</div>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Réalisations</h2>
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <h3 class="project-title">Bloc Note IA</h3>
-                        <p class="project-description">Un mini blog où nous pouvons créer, lier, modifier et supprimer des notes.
-       Avec API REST avec Django Rest Framework.
-       Touche innovante: une option pour chaque note résumer grâce à l'IA avec Openrouter API</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="detail-section">
-                <h2>Contact</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <strong>Email</strong><br>
-                        <a href="mailto:kewemickael@gmail.com">diomande.mickael@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>LinkedIn</strong><br>
-                        <a href="#">linkedin.com/in/diomandemickael</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>GitHub</strong><br>
-                        <a href="https://github.com/TermuxDev">github.com/TermuxDev</a>
-                    </div>
+        <div class="member-details-section">
+            <div class="container">
+                <div class="details-grid">
+                    <!-- Biographie -->
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="user"></i>
+                            <h2>Biographie</h2>
+                        </div>
+                        <p class="detail-text">
+                            Je suis un passionné de technologies, curieux de tout ce que l'innovation peut offrir. Pour moi, la tech n'est pas juste un domaine d'étude, c'est un levier pour changer ma vie, apprendre chaque jour, et construire quelque chose qui me dépasse. J'explore, j'expérimente, je me forme, avec l'envie de transformer cette passion en métier, en impact, en avenir. Ce hackathon est pour moi une étape de plus dans ce parcours : apprendre, créer, rencontrer, et avancer.
+                        </p>
+                    </section>
+
+                    <!-- Compétences Techniques -->
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="code-2"></i>
+                            <h2>Compétences Techniques</h2>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-category">
+                                <h4>Langages & Frameworks</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">Django</span>
+                                    <span class="skill-badge">Laravel</span>
+                                    <span class="skill-badge">HTML/CSS</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Base de données & Architecture</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">API REST</span>
+                                    <span class="skill-badge">MVC/MVT</span>
+                                    <span class="skill-badge">MERISE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Outils -->
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="wrench"></i>
+                            <h2>Outils de Développement</h2>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <i data-lucide="git-branch"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="terminal"></i>
+                                <span>Linux</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-code"></i>
+                                <span>VSCode</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="cloud"></i>
+                                <span>Google Cloud</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="box"></i>
+                                <span>Postman</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-text"></i>
+                                <span>MS Office</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Réalisations -->
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="award"></i>
+                            <h2>Réalisations</h2>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-badge">
+                                <i data-lucide="trophy"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>SanteAI - Lead Developer & IA Developer</h3>
+                                <p>Assistant IA pour la prise en charge dans les services médicaux. Projet développé lors du Hackathon AbiHack Google 2025 visant à créer un assistant intelligent pour améliorer la prise en charge des patients. Rôle : Lead Developer et Assistant Développeur Backend IA.</p>
+                                <div class="achievement-meta">
+                                    <span><i data-lucide="calendar"></i> Janvier 2025</span>
+                                    <span><i data-lucide="users"></i> Équipe de 4</span>
+                                    <span><i data-lucide="award"></i> Hackathon Winner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="member2-page" class="member-page">
-        <a href="#" class="back-button" onclick="showHome()">← Retour</a>
-        <section class="member-hero">
-            <div class="member-hero-content">
-                <div class="member-photo">
-                    <img src="WhatsApp Image 2025-05-31 at 10.55.02.jpeg" alt="photo de frejus">
-                </div>
-                <h1>Frejus Kouadio</h1>
-                <p class="member-role">Etudiant en génie logiciel , developpeur Web en formation | l'amour de l'esthetique me permet de donner un eclat vif à mes interfaces (UI/UX design)</p>
-                <p class="member-quote">"Un bon design est invisible mais inoubliable"</p>
-            </div>
-       </section>
-    
-       <div class="member-details">
-            <div class="detail-section">
-                <h2>Biographie</h2>
-                <p>Designer UI/UX  (junior) en formation avec une expérience en développement acquise au cours de sa formation universitaire. Frejus conçoit des interfaces modernes, intuitives et centrées sur l'utilisateur. Il excelle dans la création de maquettes et d'expériences cohérentes sur les projets qu'il réalise.</p>
-            </div>
-
-            <div class="detail-section">
-                <h2>Compétences Techniques</h2>
-                <div class="skills-grid">
-                   <div class="skill-item"><div class="skill-name">HTML/CSS</div></div>
-                   <div class="skill-item"><div class="skill-name">JavaScript</div></div>
-                   <div class="skill-item"><div class="skill-name">React.js</div></div>
-                   <div class="skill-item"><div class="skill-name">Responsive Design (Bootstrap)</div></div>
-                </div>
-                <h2>Outils de developpeur</h2>
-                <div class="skills-grid">
-                   <div class="skill-item"><div class="skill-name">git/github - utilisation pour travail d'equipe et hebergement</div></div>
-                   <div class="skill-item"><div class="skill-name">vscode - editeur de code pour la mise en place de mes differents projet</div></div>
-                </div>
-                <h2>logiciel bureautique</h2>
-                <div class="skills-grid">
-                   <div class="skill-item"><div class="skill-name">powerpoint - maitrise parfaite</div></div>
-                   <div class="skill-item"><div class="skill-name">Word - maitrise parfaite</div></div>
-                   <div class="skill-item"><div class="skill-name">Excel - moyen</div></div>
-                </div>
-            </div>
-            <div class="detail-section">
-                <h2>Réalisations</h2>
-                    <div class="projects-grid">
-                        <div class="project-item">
-                            <h3 class="project-title">ELIKO_VOYAGE</h3>
-                            <p class="project-description">Une maquette d'interface pour compagnie aérienne avec design moderne et expérience utilisateur optimisée.</p>
-                            <a href="https://fred0939.github.io/eliko_voyage/" class="project-link">Voir le projet →</a>
+        <button class="back-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Retour</span>
+        </button>
+        
+        <div class="member-hero-section">
+            <div class="container">
+                <div class="member-hero-grid">
+                    <div class="member-hero-image">
+                        <img src="WhatsApp Image 2025-05-31 at 10.55.02.jpeg" alt="Frejus Kouadio">
+                    </div>
+                    <div class="member-hero-info">
+                        <h1 class="member-hero-name">Frejus Kouadio</h1>
+                        <p class="member-hero-role">
+                            <i data-lucide="palette"></i>
+                            UI/UX Designer & Développeur Web
+                        </p>
+                        <blockquote class="member-quote">
+                            "Un bon design est invisible mais inoubliable"
+                        </blockquote>
+                        <div class="member-hero-actions">
+                            <a href="https://devj-58.github.io/portfolio/" target="_blank" class="btn btn-primary">
+                                <span>Portfolio</span>
+                                <i data-lucide="external-link"></i>
+                            </a>
+                            <div class="member-social">
+                                <a href="https://github.com/devJ-58" target="_blank" class="social-link">
+                                    <i data-lucide="github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/frejus-kouadio-316238329" target="_blank" class="social-link">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                                <a href="/cdn-cgi/l/email-protection#d8beaabdb2adabb3b7adb9bcb1b7f6adb1a1b9f698bdb5b9b1b4f6bbb7b5" class="social-link">
+                                    <i data-lucide="mail"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
+                </div>
             </div>
+        </div>
 
-            <div class="detail-section">
-                <h2>Contact</h2>
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <strong>Email</strong><br>
-                                <a href="mailto:frejuskouadio05.uiya.@email.com">frejuskouadio.uiya.@email.com</a>
+        <div class="member-details-section">
+            <div class="container">
+                <div class="details-grid">
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="user"></i>
+                            <h2>Biographie</h2>
                         </div>
-                        <div class="contact-item">
-                            <strong>LinkedIn</strong><br>
-                            <a href="https://www.linkedin.com/in/frejus-kouadio-316238329">linkedin.com/in/frejuskouadio</a>
+                        <p class="detail-text">
+                            Étudiant en génie logiciel et développeur web en formation. L'amour de l'esthétique me permet de donner un éclat vif à mes interfaces. Je conçois des expériences utilisateur modernes, intuitives et centrées sur l'utilisateur, avec une attention particulière portée aux détails visuels.
+                        </p>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="code-2"></i>
+                            <h2>Compétences Techniques</h2>
                         </div>
-                        <div class="contact-item">
-                            <strong>GitHub</strong><br>
-                            <a href="https://github.com/fred0939">github.com/fred0939</a>
+                        <div class="skills-list">
+                            <div class="skill-category">
+                                <h4>Frontend</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">HTML/CSS</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">React.js</span>
+                                    <span class="skill-badge">Lenis.js</span>
+                                    <span class="skill-badge">Bootstrap</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Backend</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">Laravel</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="wrench"></i>
+                            <h2>Outils</h2>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <i data-lucide="figma"></i>
+                                <span>Figma</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="palette"></i>
+                                <span>Canva</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="git-branch"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-code"></i>
+                                <span>VSCode</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="presentation"></i>
+                                <span>PowerPoint</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-text"></i>
+                                <span>Word/Excel</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="award"></i>
+                            <h2>Réalisations</h2>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-badge">
+                                <i data-lucide="trophy"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>SanteAI - Frontend Developer</h3>
+                                <p>Conception et développement de l'interface utilisateur pour l'assistant médical IA. Création du design système, des composants React et de l'expérience utilisateur complète du projet.</p>
+                                <div class="achievement-meta">
+                                    <span><i data-lucide="calendar"></i> Janvier 2025</span>
+                                    <span><i data-lucide="users"></i> Équipe de 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-       </div>
+        </div>
     </div>
- 
+
     <div id="member3-page" class="member-page">
-        <a href="#" class="back-button" onclick="showHome()">← Retour</a>
-        <section class="member-hero">
-            <div class="member-hero-content">
-                <div class="member-photo">
-                    <img src="WhatsApp Image 2025-05-31 at 10.55.02 (1).jpeg" alt="">
+        <button class="back-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Retour</span>
+        </button>
+        
+        <div class="member-hero-section">
+            <div class="container">
+                <div class="member-hero-grid">
+                    <div class="member-hero-image">
+                        <img src="WhatsApp Image 2025-05-31 at 10.55.02 (1).jpeg" alt="Honorable Djeke">
+                    </div>
+                    <div class="member-hero-info">
+                        <h1 class="member-hero-name">Honorable Djeke</h1>
+                        <p class="member-hero-role">
+                            <i data-lucide="database"></i>
+                            Spécialiste Base de Données
+                        </p>
+                        <blockquote class="member-quote">
+                            "Les données bien structurées sont la fondation de toute application performante"
+                        </blockquote>
+                        <div class="member-hero-actions">
+                            <a href="https://honorabledjeke.github.io/portfolio/" target="_blank" class="btn btn-primary">
+                                <span>Portfolio</span>
+                                <i data-lucide="external-link"></i>
+                            </a>
+                            <div class="member-social">
+                                <a href="https://github.com/david-dev225" target="_blank" class="social-link">
+                                    <i data-lucide="github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/david-djek-ab431833b" target="_blank" class="social-link">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                                <a href="/cdn-cgi/l/email-protection#82eaedecedf0e3e0eee7ace6e8e7e9e7c2e5efe3ebeeace1edef" class="social-link">
+                                    <i data-lucide="mail"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h1>Honorable Djeke</h1>
-                <p class="member-role">Junior en Data Base</p>
-                <p class="member-quote">"Les données bien structurées sont la fondation de toute application performante"</p>
             </div>
-        </section>
-    
-        <div class="member-details">
-            <div class="detail-section">
-                <h2>Biographie</h2>
-                <p>Honorable est un développeur junior spécialisé en gestion de bases de données. Passionné par l'organisation et la structuration des données, il maîtrise les concepts fondamentaux des systèmes de gestion de bases de données et travaille à optimiser les performances des applications.</p>
+        </div>
+
+        <div class="member-details-section">
+            <div class="container">
+                <div class="details-grid">
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="user"></i>
+                            <h2>Biographie</h2>
+                        </div>
+                        <p class="detail-text">
+                            Développeur spécialisé en gestion de bases de données. Passionné par l'organisation et la structuration des données, je maîtrise les concepts fondamentaux des systèmes de gestion de bases de données et travaille à optimiser les performances des applications.
+                        </p>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="code-2"></i>
+                            <h2>Compétences Techniques</h2>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-category">
+                                <h4>Base de données</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">Firebase</span>
+                                    <span class="skill-badge">Modélisation</span>
+                                    <span class="skill-badge">Optimisation</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Développement</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">HTML/CSS/JS</span>
+                                    <span class="skill-badge">PHP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="wrench"></i>
+                            <h2>Outils</h2>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <i data-lucide="git-branch"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-code"></i>
+                                <span>VSCode</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="server"></i>
+                                <span>WAMP</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="award"></i>
+                            <h2>Réalisations</h2>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-badge">
+                                <i data-lucide="trophy"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>SanteAI - Database Architect</h3>
+                                <p>Conception et gestion de la base de données pour l'assistant médical IA. Mise en place de la structure de données, optimisation des requêtes et garantie de la performance du système.</p>
+                                <div class="achievement-meta">
+                                    <span><i data-lucide="calendar"></i> Janvier 2025</span>
+                                    <span><i data-lucide="users"></i> Équipe de 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-
-            <div class="detail-section">
-                <h2>Compétences Techniques</h2>
-                <div class="skills-grid">
-                    <div class="skill-item"><div class="skill-name">HTML/CSS/JAVA-SCRIPT - Pour conception de projet web</div></div>
-                    <div class="skill-item"><div class="skill-name">MySQL</div></div>
-                    <div class="skill-item"><div class="skill-name">FIREBASE</div></div>
-                    <div class="skill-item"><div class="skill-name">Conception de BDD</div></div>
-                    <div class="skill-item"><div class="skill-name">Optimisation de requêtes</div></div>
-                    <div class="skill-item"><div class="skill-name">Modélisation de données</div></div>
-                </div>
-                <h2>Outils de developpeur</h2>
-                <div class="skills-grid">
-                   <div class="skill-item"><div class="skill-name">git/github - utilisation pour travail d'equipe et hebergement</div></div>
-                   <div class="skill-item"><div class="skill-name">vscode - editeur de code pour la mise en place de mes differents projet</div></div>
-                   <div class="skill-item"><div class="skill-name">WAMP  - mise en place de serveur local</div></div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Réalisations</h2>
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <h3 class="project-title">Restau winner</h3>
-                        <p class="project-description">site de restauration dans lequel j'ai beaucoup travaillé mes competences en base de donnée</p>
-                    </div>
-                </div>
-           </div>
-
-           <div class="detail-section">
-                <h2>Contact</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <strong>Email</strong><br>
-                        <a href="mailto:daviddjek4@gmail.com">honorable.djeke@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>LinkedIn</strong><br>
-                        <a href="https://www.linkedin.com/in/david-djek-ab431833b">david-djek-ab431833b </a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>GitHub</strong><br>
-                        <a href="https://github.com/david-dev225">github.com/honorabledjeke</a>
-                    </div>
-                </div>
-           </div>
         </div>
     </div>
 
     <div id="member4-page" class="member-page">
-        <a href="#" class="back-button" onclick="showHome()">← Retour</a>
-        <section class="member-hero">
-            <div class="member-hero-content">
-                <div class="member-photo">
-                    <img src="WhatsApp Image 2025-05-31 at 10.49.02 (1).jpeg" alt="jemima">
-                </div>
-                <h1>N'guesssan Moaye</h1>
-                <p class="member-role">Dev Back-end (junior)</p>
-                <p class="member-quote">"je ne recule devant aucun defi. Car chaque ligne de code est une victoire sur l'inconnu"</p>
-            </div>
-        </section>
+        <button class="back-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Retour</span>
+        </button>
         
-        <div class="member-details">
-            <div class="detail-section">
-                <h2>Biographie</h2>
-                <p>Je suis une étudiante curieuse et motivée, toujours prête à apprendre et à relever de nouveaux défis dans le domaine du numérique. Je m'investis activement dans mes projets académiques et personnels, avec l’objectif de devenir une développeuse back-end compétente. En parallèle, je nourris un intérêt croissant pour l’IA et la CyberSécurité, domaine dans lequel je me forme progressivement.</p>
-            </div>
-
-            <div class="detail-section">
-                <h2>Compétences Techniques</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <div class="skill-name">HTML/CSS/JAVA-SCRIPT(junior)</div>
+        <div class="member-hero-section">
+            <div class="container">
+                <div class="member-hero-grid">
+                    <div class="member-hero-image">
+                        <img src="WhatsApp Image 2025-05-31 at 10.49.02 (1).jpeg" alt="N'guesssan Moaye">
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">MySQL</div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">PHP</div>
-                    </div>
-                </div>
-                <h2>Outils de developpeur</h2>
-                <div class="skills-grid">
-                   <div class="skill-item"><div class="skill-name">git/github - utilisation pour travail d'equipe et hebergement</div></div>
-                   <div class="skill-item"><div class="skill-name">vscode - editeur de code pour la mise en place de mes differents projet</div></div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Réalisations</h2>
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <h3 class="project-title">serveur de partage de fichiers</h3>
-                        <p class="project-description">mise en place d'un serveur pour mon établissement dans le but de stocker les fichiers de cours et faciliter l'accès des étudiants à des ressources pédagogique </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Contact</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <strong>Email</strong><br>
-                        <a href="mailto:jemimaoceanenguessan@gmail.com">jemimaoceanenguessan@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>LinkedIn</strong><br>
-                        <a href="https://www.linkedin.com/in/jemima-n-guessan-68a88b368?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">linkedin.com/in/nguessanmoaye</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>GitHub</strong><br>
-                        <a href="https://github.com/JemimaNguess">github.com/nguessanmoaye</a>
+                    <div class="member-hero-info">
+                        <h1 class="member-hero-name">N'guesssan Moaye</h1>
+                        <p class="member-hero-role">
+                            <i data-lucide="server"></i>
+                            Développeur Back-end
+                        </p>
+                        <blockquote class="member-quote">
+                            "Je ne recule devant aucun défi. Car chaque ligne de code est une victoire sur l'inconnu"
+                        </blockquote>
+                        <div class="member-hero-actions">
+                            <a href="moaye.portfolio" target="_blank" class="btn btn-primary">
+                                <span>Portfolio</span>
+                                <i data-lucide="external-link"></i>
+                            </a>
+                            <div class="member-social">
+                                <a href="https://github.com/JemimaNguess" target="_blank" class="social-link">
+                                    <i data-lucide="github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/jemima-n-guessan-68a88b368" target="_blank" class="social-link">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                                <a href="/cdn-cgi/l/email-protection#caa0afa7a3a7aba5a9afaba4afa4adbfafb9b9aba48aada7aba3a6e4a9a5a7" class="social-link">
+                                    <i data-lucide="mail"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="member-details-section">
+            <div class="container">
+                <div class="details-grid">
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="user"></i>
+                            <h2>Biographie</h2>
+                        </div>
+                        <p class="detail-text">
+                            Étudiante curieuse et motivée, toujours prête à apprendre et à relever de nouveaux défis dans le domaine du numérique. Je m'investis activement dans mes projets académiques et personnels, avec l'objectif de devenir une développeuse back-end compétente. En parallèle, je nourris un intérêt croissant pour l'IA et la CyberSécurité.
+                        </p>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="code-2"></i>
+                            <h2>Compétences Techniques</h2>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-category">
+                                <h4>Développement</h4>
+                                <div class="skill-items">
+                                    <span class="skill-badge">HTML/CSS/JS</span>
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="detail-header">
+                            <i data-lucide="wrench"></i>
+                            <h2>Outils</h2>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <i data-lucide="git-branch"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="tool-item">
+                                <i data-lucide="file-code"></i>
+                                <span>VSCode</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card full-width">
+                        <div class="detail-header">
+                            <i data-lucide="award"></i>
+                            <h2>Réalisations</h2>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-badge">
+                                <i data-lucide="trophy"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>SanteAI - Backend Developer</h3>
+                                <p>Développement back-end pour l'assistant médical IA. Contribution à l'architecture serveur et à l'intégration des fonctionnalités IA du projet.</p>
+                                <div class="achievement-meta">
+                                    <span><i data-lucide="calendar"></i> Janvier 2025</span>
+                                    <span><i data-lucide="users"></i> Équipe de 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
-   
-    <footer>
-        <p>&copy; 2025 Team Innovation. Tous droits réservés.</p>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Team Innovation Logo" class="footer-logo-image">
+                        <span>Team Innovation</span>
+                    </div>
+                    <p>Construire l'avenir de la technologie, un projet à la fois.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#team">Équipe</a></li>
+                        <li><a href="#projects">Projets</a></li>
+                        <li><a href="#about">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Intéressé par une collaboration ?</p>
+                    <a href="#team" class="footer-cta">Contactez-nous</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Team Innovation. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="team.js"></script>
